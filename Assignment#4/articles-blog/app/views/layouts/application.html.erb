@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ArticlesBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+     <h1>Tech-Blog</h1>
+     <div class= 'blog' >
+      <%= link_to "Home", root_path, :class => "link_style" %>
+     </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>

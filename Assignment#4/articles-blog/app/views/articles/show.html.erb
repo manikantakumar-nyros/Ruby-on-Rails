@@ -1,0 +1,16 @@
+<div class="article_details">
+<h2>Article Details</h2>
+<p>
+	<strong>Title:</strong>
+	<%= @article.title %>
+</p>
+
+<p>
+	<strong>Text:</strong>
+	<%= @article.text %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article), :class => "link_style" %> |
+<%= link_to 'Back', articles_path, :class => "link_style" %>
+
+</div>

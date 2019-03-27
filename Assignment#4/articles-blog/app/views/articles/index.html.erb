@@ -1,0 +1,36 @@
+<div>
+<%= image_tag "tech1.jpeg" %>
+<br><br>
+<div class="article_link">
+<%= link_to 'New article', articles_new_path(@article), :class => "link_style" %>
+</div><br><br>
+<h1 class= "list_heading">Listing Technology Articles</h1>
+<table>
+	<tr>
+		<th style="width:15%">Title</th>
+		<th>Text</th>
+		<th colspan="2"></th>
+	</tr>
+
+	<% @articles.each do |article| %>
+	  <tr>
+	  	  <td>
+        <a href="<%= article_path(article) %>" class="article_title" ><%= article.title  %>
+        </a>
+        </td>
+        <td><%= article.text %></td>
+        <td>
+          <%= link_to 'Show', article_path(article), :class => "link_style" %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_article_path(article), :class => "link_style" %>
+        </td>
+        <td>
+          <%= link_to 'Destroy', article_path(article),
+                method: :delete,
+                data: { confirm:"Are you sure?"}, :class => "link_style" %>
+        </td>
+	  </tr>
+	<% end %>
+</table>
+</div>

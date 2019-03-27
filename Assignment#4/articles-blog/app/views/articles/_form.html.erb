@@ -1,0 +1,25 @@
+<%= form_with model: @article, local: true do |form| %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+  
+    <%= form.submit :class => 'submit_article' %><br><br>
+
+<% end %>
