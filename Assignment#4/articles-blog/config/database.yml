@@ -6,17 +6,17 @@ default: &default
 
 development:
   <<: *default
-  database: articles-blog_development
+  database: articles_development
   username: root
   password: nyros@123
 test:
   <<: *default
-  database: articles-blog_test
+  database: articles_test
   username: article-blog
   password: <%= ENV['ARTICLE-BLOG_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
-  database: articles-blog_production
+  database: articles_production
   username: articles-blog
   password: <%= ENV['ARTICLES-BLOG_DATABASE_PASSWORD'] %>

@@ -1,16 +1,31 @@
-<div class="article_details">
-<h2>Article Details</h2>
-<p>
-	<strong>Title:</strong>
-	<%= @article.title %>
-</p>
+<div class=container>
+  <div class="card col-md-6 offset-md-3">
+    <div class="btn btn-primary btn-sm">Article Details</div>
+    <div class="card-body">
+      <p class="card-text">
+	     <strong>Name:</strong>
+	     <%= @article.name %>
+      </p>
+  
+     <p class="card-text">
+       <strong>Description:</strong>
+       <%= @article.description %>
+     </p>
 
-<p>
-	<strong>Text:</strong>
-	<%= @article.text %>
-</p>
+     <p class="card-text">
+        <strong>Published:</strong>
+        <%= @article.published? ? 'yes' : 'no' %>
+     </p>
 
-<%= link_to 'Edit', edit_article_path(@article), :class => "link_style" %> |
-<%= link_to 'Back', articles_path, :class => "link_style" %>
-
+     <p class="card-text">
+        <strong>Categories:</strong>
+        <%= @article.category %>
+      </p>
+     <p class="card-text">
+        <strong>Categories:</strong>
+      <%= image_tag @article.image.url(:original), :class=> "img-fluid" %>
+    </p>
+     <%= link_to 'Back', articles_path, :class => "btn btn-secondary" %>
+     <%= link_to 'Edit', edit_article_path(@article), :class => "btn btn-warning" %>
+    </div>
 </div>
