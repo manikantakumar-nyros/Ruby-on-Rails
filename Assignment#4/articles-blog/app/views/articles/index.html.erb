@@ -1,66 +1,69 @@
 <div>
-<%= image_tag "tech2.jpeg" %>
-<br><br>
-<div class="article_link">
-<%= link_to 'Create New Article', articles_new_path(@article), :class => "btn btn-primary" %>
-</div><br><br>
-<h1 class= "list_heading">Listing Technology Articles</h1>
-<div class="container">
-  <hr class="hrcolor">
-<div class="btn btn-primary btn-sm">Articles</div><br><br>
-<div class="btn btn-success">New Article</div><br>
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Decription</th>
-    <th>Is Published</th>
-    <th>Category</th>
-    <th>Image</th>
-		<th>Actions</th>
-	</tr>
-	<% @articles.each do |article| %>
-	  <tr>
-	  	  <td>
-        <a href="<%= article_path(article) %>" class="article_title" ><%= article.name  %>
-        </a>
-        </td>
-        <td><%= article.description %></td>
-        <td><%= article.published? ? 'yes' : 'no' %></td>
-        <td><%= article.category %></td>
-        <td><%= image_tag article.image.url(:thumb), :class=> "img-fluid" %> </td>
-               
-        <td>
-          <%= link_to 'Show', article_path(article), :class => "btn btn-success" %>
+<%= image_tag "tech2.jpeg" %><br><br>
+  <h1 class= "list_heading">Listing Technology Articles</h1>
+    <div class="container">
+      <hr class="hrcolor">
+        <div class="btn btn-primary btn-sm">Articles</div><br><br>
+          <div>
+             <%= link_to 'New Article', articles_new_path(@article), :class => "btn btn-success" %>
+          </div>
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Decription</th>
+                <th>Is Published</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Actions</th>
+              </tr>
+              <% @articles.each do |article| %>
+              <tr>
+                <td>
+                <a href="<%= article_path(article) %>" class="article_title" ><%= article.name  %>
+                </a>
+                </td>
+                <td><%= article.description %></td>
+                <td><%= article.published? ? 'yes' : 'no' %></td>
+                <td><%= article.category %></td>
+                <td class="art-img">
+                  <img src="<%= article.image %>" alt="Articel Image" style="width:100%;max-width:100px;height:50px" id="myImg" class="post-img" onclick="('<%= article.image %>')" />
+                  <div id="myImgModal" class="modal img-pop">
+                  <span class="close img-close" id="close123">
+                  &times;
+                  </span>
+                  <img class="modal-content img-content" id="img01">
+                  </div>
+                </td>
+                <td>
+                  <%= link_to 'Show', article_path(article), :class => "btn btn-success" %>
 
-          <%= link_to 'Edit', edit_article_path(article), :class => "btn btn-warning" %>
+                  <%= link_to 'Edit', edit_article_path(article), :class => "btn btn-warning" %>
 
-          <%= link_to "Destroy", "#", "data-toggle": "modal", "data-target": "#myModal-#{ article.id }", :class => "btn btn-danger" %>
-<div class="modal fade" id="myModal-<%= article.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">
-        Confirmation Box
-        </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure to delete this Article? 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <%= link_to 'Destroy', 
-                 delete_article_path(article), 
-                             method: :delete, :class => 'btn btn-danger' %>
-      </div>
+                  <%= link_to "Destroy", "#", "data-toggle": "modal", "data-target": "#myModal-#{ article.id }", :class => "btn btn-danger" %>
+                    <div class="modal fade" id="myModal-<%= article.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="myModalLabel">
+                            Confirmation Box
+                          </h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                        Are you sure to delete this Article? 
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                          <%= link_to 'Destroy', delete_article_path(article), method: :delete, :class => 'btn btn-danger' %>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+              </tr>
+              <% end %>
+            </table>
+        </div>
     </div>
-  </div>
-        </td>
-	  </tr>
-	<% end %>
-</table>
-</div>
-</div>
 </div><br><br>
