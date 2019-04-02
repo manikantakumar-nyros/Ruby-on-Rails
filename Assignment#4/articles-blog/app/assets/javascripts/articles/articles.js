@@ -5,5 +5,5 @@ $(document).ready(function(){
   });
   $("#close123").on("click", function(){
     $("#myImgModal").hide();
-  })
+  });
 });

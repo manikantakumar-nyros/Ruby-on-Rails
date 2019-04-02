@@ -1,54 +1,54 @@
 <div>
   <hr class="hrcolor">
-<%= form_with model: @article, local: true do |form| %>
-<% if @article.errors.any? %>
+  <%= form_with model: @article, local: true do |form| %>
+   <% if @article.errors.any? %>
     <div id="error_explanation">
-      <ul>
+       <ul>
         <% @article.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
-      </ul>
+       </ul>
+     </div>
+   <% end %>
+    <div class="form-group">
+      <p>
+        <%= form.label :name %><br>
+        <%= form.text_field :name, :placeholder => "Name", :class => "form-control" %>
+      </p>
+    </div>
+    <div class="form-group">
+      <p>
+        <%= form.label :description %><br>
+        <%= form.text_area :description, :placeholder => "description", :class => "form-control" %>
+      </p>
+    </div>
+    <div class="form-group form-check">
+      <p>
+        <%= form.label :published %><br>
+        <%= form.check_box "published", {}, :checked_value => 'Yes', :unchecked_value => 'no' %>
+      </p>
+    </div>
+    <div class="form-group">
+      <p>
+        <%= form.label :category %><br>
+        <%= form.select(:category, options_for_select([['IT', 'IT'],['IoT', 'IoT'],['Aerospace', 'Aerospace']]), {}, {class: "form-control"}) %>
+      </p>
+    </div>
+    <div class="form-group">
+      <p>
+        <%= form.label :image %><br>
+        <%= form.file_field :image, :class => "form-control-file" %>
+      </p>
+    </div><br>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+         <%= link_to 'Back', articles_path, :class => "btn btn-warning" %>
+        </div>
+        <div class="offset-md-6">
+         <%= form.submit :class => "btn btn-success" %>
+        </div>  
+      </div>
     </div>
   <% end %>
-<div class="form-group">
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name, :placeholder => "Name", :class => "form-control" %>
-  </p>
-</div>
-<div class="form-group">
-  <p>
-    <%= form.label :description %><br>
-    <%= form.text_area :description, :placeholder => "description", :class => "form-control" %>
-  </p>
-</div>
-<div class="form-group form-check">
-  <p>
-    <%= form.label :published %><br>
-    <%= form.check_box "published", {}, :checked_value => 'Yes', :unchecked_value => 'no' %>
-  </p>
-</div>
-<div class="form-group">
-  <p>
-    <%= form.label :category %><br>
-    <%= form.select(:category, options_for_select([['IT', 'IT'],['IoT', 'IoT'],['Aerospace', 'Aerospace']]), {}, {class: "form-control"}) %>
-  </p>
-</div>
-<div class="form-group">
-  <p>
-    <%= form.label :image %><br>
-    <%= form.file_field :image, :class => "form-control-file" %>
-  </p>
-</div><br>
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-    <%= link_to 'Back', articles_path, :class => "btn btn-warning" %>
-  </div>
-  <div class="offset-md-6">
-    <%= form.submit :class => "btn btn-success" %>
-  </div>  
-    </div>
-    </div>
-<% end %>
 </div>
